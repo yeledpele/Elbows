@@ -1,5 +1,4 @@
 ﻿using BinaryEyes.Common.Attributes;
-using TMPro;
 using UnityEngine;
 
 namespace Elbows.MapComponents
@@ -20,7 +19,8 @@ namespace Elbows.MapComponents
 
         private void Update()
         {
-            _offset = (_canvasTransform.sizeDelta - _target.sizeDelta)*0.5f;
+            var targetSize = Vector2.Scale(_target.sizeDelta, _target.localScale);
+            _offset = (_canvasTransform.sizeDelta - targetSize)*0.5f;
             _offset.x = Mathf.Abs(_offset.x);
             _offset.y = Mathf.Abs(_offset.y);
         }
