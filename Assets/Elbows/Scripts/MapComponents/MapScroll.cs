@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using BinaryEyes.Common.Data;
+using BinaryEyes.Common.Extensions;
+using UnityEngine;
 
 namespace Elbows.MapComponents
 {
@@ -6,9 +8,10 @@ namespace Elbows.MapComponents
         : MonoBehaviour
     {
         [SerializeField] private RectTransform _target;
+        [SerializeField] private float _speed = 150.0f;
+        private Vector2 _mousePosition;
         private RectTransform _canvasTransform;
         private Canvas _canvas;
-        private Vector2 _offset;
 
         private void Start()
         {
@@ -18,10 +21,30 @@ namespace Elbows.MapComponents
 
         private void Update()
         {
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                _canvasTransform,
+                Input.mousePosition,
+                null,
+                out var mousePosition);
+
             var targetSize = Vector2.Scale(_target.sizeDelta, _target.localScale);
-            _offset = (_canvasTransform.sizeDelta - targetSize)*0.5f;
-            _offset.x = Mathf.Abs(_offset.x);
-            _offset.y = Mathf.Abs(_offset.y);
+            var offset = (_canvasTransform.sizeDelta - targetSize)*0.5f;
+            offset.x = Mathf.Abs(offset.x);
+            offset.y = Mathf.Abs(offset.y);
+
+            var targetPosition = _target.anchoredPosition;
+            if (Input.GetMouseButton(0))
+            {
+                var delta = (mousePosition - _mousePosition)*(Time.deltaTime*_speed);
+                targetPosition += new Vector2(delta.x, delta.y);
+            }
+
+            var horizontal = new Interval(-offset.x, +offset.x);
+            var vertical = new Interval(-offset.y, +offset.y);
+            targetPosition.x = horizontal.GetLocked(targetPosition.x);
+            targetPosition.y = vertical.GetLocked(targetPosition.y);
+            _target.anchoredPosition = targetPosition;
+            _mousePosition = mousePosition;
         }
     }
 }

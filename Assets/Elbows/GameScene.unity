@@ -536,10 +536,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b34290a7f24b12849871251fd41ffb4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _canvas: {fileID: 921089908}
-  _canvasTransform: {fileID: 0}
-  _offset: {x: 0, y: 0}
   _target: {fileID: 1649579697}
+  _speed: 150
 --- !u!114 &1411674685
 MonoBehaviour:
   m_ObjectHideFlags: 0
