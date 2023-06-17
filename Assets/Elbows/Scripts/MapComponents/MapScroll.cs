@@ -1,15 +1,14 @@
-﻿using BinaryEyes.Common.Attributes;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Elbows.MapComponents
 {
     public class MapScroll
         : MonoBehaviour
     {
-        [SerializeField] [ReadOnlyField] private Canvas _canvas;
-        [SerializeField] [ReadOnlyField] private RectTransform _canvasTransform;
-        [SerializeField] [ReadOnlyField] private Vector2 _offset;
         [SerializeField] private RectTransform _target;
+        private RectTransform _canvasTransform;
+        private Canvas _canvas;
+        private Vector2 _offset;
 
         private void Start()
         {
