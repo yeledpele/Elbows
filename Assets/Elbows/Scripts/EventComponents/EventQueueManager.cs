@@ -20,7 +20,7 @@ namespace Elbows.EventComponents
         : SingletonComponent<EventQueueManager>
     {
         [SerializeField] [ReadOnlyField] private TextMeshProUGUI _eventTitle;
-        [SerializeField] private QueueEventData _testEventData;
+        [SerializeField] private LocationData _testEventData;
         private readonly Dictionary<EventPanelType, QueueEventPanel> _panels = new();
         
         protected override void Awake()

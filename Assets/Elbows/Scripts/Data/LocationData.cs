@@ -5,11 +5,11 @@ using UnityEngine;
 namespace Elbows.Data
 {
     /// <summary>
-    /// The QueueEventData provides information regarding a particular game event
+    /// The LocationData provides information regarding a particular game event
     /// in a location with a queue.
     /// </summary>
-    [CreateAssetMenu(menuName = "Elbows/Queue Event Data")]
-    public class QueueEventData
+    [CreateAssetMenu(menuName = "Elbows/Location Data")]
+    public class LocationData
         : ScriptableObject
     {
         [SerializeField] private Sprite _leftBackground;
