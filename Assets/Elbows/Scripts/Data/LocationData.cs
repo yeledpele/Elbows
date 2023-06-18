@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Elbows.Enums;
 using UnityEngine;
 
@@ -15,6 +16,8 @@ namespace Elbows.Data
         [SerializeField] private Sprite _leftBackground;
         [SerializeField] private Sprite _centerBackground;
         [SerializeField] private Sprite _rightBackground;
+        [SerializeField] private QueueCardData[] _mainCards;
+        public IReadOnlyList<QueueCardData> MainCards => _mainCards;
 
         public Sprite GetBackground(EventPanelType type)
         {

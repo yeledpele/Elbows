@@ -41,11 +41,15 @@ namespace Elbows.EventComponents
         private IEnumerator RunTestData()
         {
             yield return null;//wait one frame
+            _eventTitle.text = _testEventData.name;
+            
             var panelTypes = Enum.GetValues(typeof(EventPanelType)).Cast<EventPanelType>();
             foreach (var panelType in panelTypes)
                 _panels[panelType].SetBackground(_testEventData.GetBackground(panelType));
 
-            _eventTitle.text = _testEventData.name;
+            var mainPanel = _panels[EventPanelType.Center];
+
+
         }
     }
 }
