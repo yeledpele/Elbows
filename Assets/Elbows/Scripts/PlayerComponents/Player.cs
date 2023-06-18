@@ -1,4 +1,8 @@
 ﻿using BinaryEyes.Common;
+using BinaryEyes.Common.Attributes;
+using BinaryEyes.Common.Extensions;
+using Elbows.Data;
+using UnityEngine;
 
 namespace Elbows.PlayerComponents
 {
@@ -9,6 +13,14 @@ namespace Elbows.PlayerComponents
     public class Player
         : SingletonComponent<Player>
     {
+        [SerializeField] [ReadOnlyField] private PlayerData _current;
+        [SerializeField] private PlayerData _data;
 
+        protected override void Awake()
+        {
+            _current = Instantiate(_data);
+            base.Awake();
+            this.LogMessage($"{_current.name} is awake");
+        }
     }
 }
