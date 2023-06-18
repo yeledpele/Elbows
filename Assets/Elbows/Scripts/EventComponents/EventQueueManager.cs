@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using BinaryEyes.Common;
 using BinaryEyes.Common.Attributes;
+using BinaryEyes.Common.Extensions;
 using Elbows.Data;
 using Elbows.Enums;
+using TMPro;
 using UnityEngine;
 
 namespace Elbows.EventComponents
@@ -17,11 +19,13 @@ namespace Elbows.EventComponents
     public class EventQueueManager
         : SingletonComponent<EventQueueManager>
     {
-        private readonly Dictionary<EventPanelType, QueueEventPanel> _panels = new();
+        [SerializeField] [ReadOnlyField] private TextMeshProUGUI _eventTitle;
         [SerializeField] private QueueEventData _testEventData;
+        private readonly Dictionary<EventPanelType, QueueEventPanel> _panels = new();
         
         protected override void Awake()
         {
+            _eventTitle = this.GetNameComponent<TextMeshProUGUI>("EventTitle");
             base.Awake();
             MapPanels();
             StartCoroutine(RunTestData());
@@ -40,6 +44,8 @@ namespace Elbows.EventComponents
             var panelTypes = Enum.GetValues(typeof(EventPanelType)).Cast<EventPanelType>();
             foreach (var panelType in panelTypes)
                 _panels[panelType].SetBackground(_testEventData.GetBackground(panelType));
+
+            _eventTitle.text = _testEventData.name;
         }
     }
 }
