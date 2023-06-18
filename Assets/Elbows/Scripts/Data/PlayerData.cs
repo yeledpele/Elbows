@@ -10,6 +10,8 @@ namespace Elbows.Data
     public class PlayerData
         : ScriptableObject
     {
-
+        public float Battery;
+        public float Fuel;
+        public float Money;
     }
 }

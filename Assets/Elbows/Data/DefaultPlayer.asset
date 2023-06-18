@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0393acf858ad87d4283fb316bdc49a06, type: 3}
   m_Name: DefaultPlayer
   m_EditorClassIdentifier: 
-  _name: Benel
+  Battery: 100
+  Fuel: 100
+  Money: 50
