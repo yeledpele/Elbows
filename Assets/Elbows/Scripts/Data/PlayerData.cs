@@ -10,7 +10,6 @@ namespace Elbows.Data
     public class PlayerData
         : ScriptableObject
     {
-        [SerializeField] private string _name;
-        public string Name => _name;
+
     }
 }
