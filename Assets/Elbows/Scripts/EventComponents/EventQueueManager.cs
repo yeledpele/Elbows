@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using BinaryEyes.Common;
 using BinaryEyes.Common.Attributes;
@@ -15,25 +17,29 @@ namespace Elbows.EventComponents
     public class EventQueueManager
         : SingletonComponent<EventQueueManager>
     {
-        [SerializeField] [ReadOnlyField] private QueueEventPanel _leftPanel;
-        [SerializeField] [ReadOnlyField] private QueueEventPanel _centerPanel;
-        [SerializeField] [ReadOnlyField] private QueueEventPanel _rightPanel;
+        private readonly Dictionary<EventPanelType, QueueEventPanel> _panels = new();
         [SerializeField] private QueueEventData _testEventData;
         
         protected override void Awake()
         {
             base.Awake();
-            var panels = GetComponentsInChildren<QueueEventPanel>();
-            _leftPanel = panels.First(entry => entry.Type == EventPanelType.Left);
-            _centerPanel = panels.First(entry => entry.Type == EventPanelType.Center);
-            _rightPanel = panels.First(entry => entry.Type == EventPanelType.Right);
+            MapPanels();
             StartCoroutine(RunTestData());
+        }
+
+        private void MapPanels()
+        {
+            var panels = GetComponentsInChildren<QueueEventPanel>();
+            foreach (var panel in panels)
+                _panels.Add(panel.Type, panel);
         }
 
         private IEnumerator RunTestData()
         {
-            yield return null;
-            
+            yield return null;//wait one frame
+            var panelTypes = Enum.GetValues(typeof(EventPanelType)).Cast<EventPanelType>();
+            foreach (var panelType in panelTypes)
+                _panels[panelType].SetBackground(_testEventData.GetBackground(panelType));
         }
     }
 }
