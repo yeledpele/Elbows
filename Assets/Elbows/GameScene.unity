@@ -214,8 +214,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: -1
-  _background: {fileID: 164058330}
-  _activeView: {fileID: 694482576}
+  _background: {fileID: 0}
+  _cardView: {fileID: 0}
 --- !u!1 &316750912
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,8 +391,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 1
-  _background: {fileID: 509950749}
-  _activeView: {fileID: 914688929}
+  _background: {fileID: 0}
+  _cardView: {fileID: 0}
 --- !u!1 &563741953
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,7 +574,7 @@ GameObject:
   - component: {fileID: 694482577}
   - component: {fileID: 694482576}
   m_Layer: 0
-  m_Name: ActiveView
+  m_Name: CardView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -764,7 +764,7 @@ GameObject:
   - component: {fileID: 914688930}
   - component: {fileID: 914688929}
   m_Layer: 0
-  m_Name: ActiveView
+  m_Name: CardView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1080,8 +1080,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 0
-  _background: {fileID: 1104578647}
-  _activeView: {fileID: 1597445177}
+  _background: {fileID: 0}
+  _cardView: {fileID: 0}
 --- !u!1 &1119010619
 GameObject:
   m_ObjectHideFlags: 0
@@ -1456,7 +1456,7 @@ GameObject:
   - component: {fileID: 1597445178}
   - component: {fileID: 1597445177}
   m_Layer: 0
-  m_Name: ActiveView
+  m_Name: CardView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

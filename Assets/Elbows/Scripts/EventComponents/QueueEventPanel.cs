@@ -1,4 +1,6 @@
-﻿using Elbows.Enums;
+﻿using BinaryEyes.Common.Attributes;
+using BinaryEyes.Common.Extensions;
+using Elbows.Enums;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,9 +13,9 @@ namespace Elbows.EventComponents
     public class QueueEventPanel
         : MonoBehaviour
     {
+        [SerializeField] [ReadOnlyField] private Image _background;
+        [SerializeField] [ReadOnlyField] private Image _cardView;
         [SerializeField] private EventPanelType _type;
-        [SerializeField] private Image _background;
-        [SerializeField] private Image _activeView;
         public EventPanelType Type => _type;
 
         public void SetBackground(Sprite image)
@@ -23,13 +25,15 @@ namespace Elbows.EventComponents
 
         public void SetActiveView(Sprite image)
         {
-            _activeView.gameObject.SetActive(true);
-            _activeView.sprite = image;
+            _cardView.gameObject.SetActive(true);
+            _cardView.sprite = image;
         }
 
         private void Awake()
         {
-            _activeView.gameObject.SetActive(false);
+            _background = GetComponent<Image>();
+            _cardView = this.GetNameComponent<Image>("CardView");
+            _cardView.gameObject.SetActive(false);
         }
     }
 }
