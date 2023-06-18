@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using BinaryEyes.Common;
+using BinaryEyes.Common.Attributes;
 using Elbows.Enums;
+using UnityEngine;
 
 namespace Elbows.EventComponents
 {
@@ -11,15 +14,17 @@ namespace Elbows.EventComponents
     public class EventQueueManager
         : SingletonComponent<EventQueueManager>
     {
-        private readonly Dictionary<EventPanelType, QueueEventPanel> _panels = new();
-        public IReadOnlyDictionary<EventPanelType, QueueEventPanel> Panels => _panels;
-
+        [SerializeField] [ReadOnlyField] private QueueEventPanel _leftPanel;
+        [SerializeField] [ReadOnlyField] private QueueEventPanel _centerPanel;
+        [SerializeField] [ReadOnlyField] private QueueEventPanel _rightPanel;
+        
         protected override void Awake()
         {
             base.Awake();
             var panels = GetComponentsInChildren<QueueEventPanel>();
-            foreach (var panel in panels)
-                _panels.Add(panel.Type, panel);
+            _leftPanel = panels.First(entry => entry.Type == EventPanelType.Left);
+            _centerPanel = panels.First(entry => entry.Type == EventPanelType.Center);
+            _rightPanel = panels.First(entry => entry.Type == EventPanelType.Right);
         }
     }
 }
