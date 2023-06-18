@@ -13,11 +13,23 @@ namespace Elbows.EventComponents
     {
         [SerializeField] private EventPanelType _type;
         [SerializeField] private Image _background;
+        [SerializeField] private Image _activeView;
         public EventPanelType Type => _type;
 
         public void SetBackground(Sprite image)
         {
             _background.sprite = image;
+        }
+
+        public void SetActiveView(Sprite image)
+        {
+            _activeView.gameObject.SetActive(true);
+            _activeView.sprite = image;
+        }
+
+        private void Awake()
+        {
+            _activeView.gameObject.SetActive(false);
         }
     }
 }
