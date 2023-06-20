@@ -47,6 +47,9 @@ namespace Elbows.EventComponents
             foreach (var panelType in panelTypes)
                 _panels[panelType].SetBackground(_testEventData.GetBackground(panelType));
 
+            var cards = _testEventData.MainCards.ToList().GetShuffledClone();
+
+
             var mainPanel = _panels[EventPanelType.Center];
 
 
