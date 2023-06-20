@@ -3,7 +3,6 @@ using BinaryEyes.Common.Attributes;
 using BinaryEyes.Common.Extensions;
 using Elbows.Data;
 using Elbows.Enums;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,8 +24,9 @@ namespace Elbows.EventComponents
 
         public void AddCard(QueueCardData cardData)
         {
-            var view = Instantiate(_cardView);
-            
+            this.LogMessage($"AddingCard: {cardData.name}");
+            var view = Instantiate(_cardView, _cardView.transform.parent).SetData(cardData);
+
             _views.Add(view);
         }
 
