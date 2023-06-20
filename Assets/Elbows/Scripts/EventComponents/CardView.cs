@@ -19,6 +19,7 @@ namespace Elbows.EventComponents
         {
             _card = Instantiate(data);
             _display.sprite = _card.BackImage;
+            _display.enabled = true;
 
             name = data.name;
             gameObject.SetActive(true);
