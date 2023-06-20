@@ -45,6 +45,8 @@ namespace Elbows.EventComponents
             yield return null;//wait one frame
             _eventTitle.text = _testEventData.name;
             _fullBackground.sprite = _testEventData.FullBackground;
+            _fullBackground.color = Color.white;
+            _fullBackground.enabled = true;
 
             var mainPanel = _panels[EventPanelType.Center];
             var cards = _testEventData.MainCards.ToList().GetShuffledClone();

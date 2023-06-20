@@ -26,7 +26,8 @@ namespace Elbows.EventComponents
         {
             this.LogMessage($"AddingCard: {cardData.name}");
             var view = Instantiate(_cardView, _cardView.transform.parent).SetData(cardData);
-
+            view.transform.SetAsFirstSibling();
+            
             _views.Add(view);
         }
 
@@ -38,6 +39,7 @@ namespace Elbows.EventComponents
         private void Awake()
         {
             _background = GetComponent<Image>();
+            _background.enabled = false;
             _cardView = this.GetNameComponent<CardView>("CardView");
             _cardView.gameObject.SetActive(false);
         }
