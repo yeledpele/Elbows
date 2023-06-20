@@ -14,5 +14,15 @@ namespace Elbows.EventComponents
     {
         [SerializeField] [ReadOnlyField] private QueueCardData _card;
         [SerializeField] private Image _display;
+
+        public CardView SetData(QueueCardData data)
+        {
+            _card = Instantiate(data);
+            _display.sprite = _card.BackImage;
+
+            name = data.name;
+            gameObject.SetActive(true);
+            return this;
+        }
     }
 }

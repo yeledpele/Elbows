@@ -9,6 +9,7 @@ using Elbows.Data;
 using Elbows.Enums;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Elbows.EventComponents
 {
@@ -20,6 +21,7 @@ namespace Elbows.EventComponents
         : SingletonComponent<EventQueueManager>
     {
         [SerializeField] [ReadOnlyField] private TextMeshProUGUI _eventTitle;
+        [SerializeField] private Image _fullBackground;
         [SerializeField] private LocationData _testEventData;
         private readonly Dictionary<EventPanelType, QueueEventPanel> _panels = new();
         
@@ -42,17 +44,12 @@ namespace Elbows.EventComponents
         {
             yield return null;//wait one frame
             _eventTitle.text = _testEventData.name;
-            
-            var panelTypes = Enum.GetValues(typeof(EventPanelType)).Cast<EventPanelType>();
-            foreach (var panelType in panelTypes)
-                _panels[panelType].SetBackground(_testEventData.GetBackground(panelType));
-
-            var cards = _testEventData.MainCards.ToList().GetShuffledClone();
-
+            _fullBackground.sprite = _testEventData.FullBackground;
 
             var mainPanel = _panels[EventPanelType.Center];
-
-
+            var cards = _testEventData.MainCards.ToList().GetShuffledClone();
+            foreach (var card in cards)
+                mainPanel.AddCard(card);
         }
     }
 }

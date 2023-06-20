@@ -13,11 +13,13 @@ namespace Elbows.Data
     public class LocationData
         : ScriptableObject
     {
+        [SerializeField] private Sprite _fullBackground;
         [SerializeField] private Sprite _leftBackground;
         [SerializeField] private Sprite _centerBackground;
         [SerializeField] private Sprite _rightBackground;
         [SerializeField] private QueueCardData[] _mainCards;
         public IReadOnlyList<QueueCardData> MainCards => _mainCards;
+        public Sprite FullBackground => _fullBackground;
 
         public Sprite GetBackground(EventPanelType type)
         {
