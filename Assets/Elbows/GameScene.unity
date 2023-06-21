@@ -213,13 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e721ecea15e035a40a7eb0dea6a9a953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _background: {fileID: 0}
-  _cardView: {fileID: 0}
-  _views: []
-  _type: -1
-  _initialSize: {x: 0.6, y: 0.6, z: 1}
-  _resizeStep: {x: 0.08, y: 0.08, z: 0}
-  _offsetStep: {x: 150, y: 110, z: 0}
+  _spot: -1
 --- !u!1 &316750912
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,13 +388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e721ecea15e035a40a7eb0dea6a9a953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _background: {fileID: 0}
-  _cardView: {fileID: 0}
-  _views: []
-  _type: 1
-  _initialSize: {x: 0.6, y: 0.6, z: 1}
-  _resizeStep: {x: 0.08, y: 0.08, z: 0}
-  _offsetStep: {x: 150, y: 110, z: 0}
+  _spot: 1
 --- !u!1 &563741953
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,8 +647,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45d7bb2f86495ff45b8ce625bb76973a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _card: {fileID: 0}
-  _display: {fileID: 694482576}
 --- !u!1 &819954909
 GameObject:
   m_ObjectHideFlags: 0
@@ -864,8 +850,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45d7bb2f86495ff45b8ce625bb76973a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _card: {fileID: 0}
-  _display: {fileID: 914688929}
 --- !u!1 &921089905
 GameObject:
   m_ObjectHideFlags: 0
@@ -1117,13 +1101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e721ecea15e035a40a7eb0dea6a9a953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _background: {fileID: 0}
-  _cardView: {fileID: 0}
-  _views: []
-  _type: 0
-  _initialSize: {x: 0.6, y: 0.6, z: 1}
-  _resizeStep: {x: 0.08, y: 0.08, z: 0}
-  _offsetStep: {x: 150, y: 110, z: 0}
+  _spot: 0
 --- !u!1 &1119010619
 GameObject:
   m_ObjectHideFlags: 0
@@ -1212,7 +1190,7 @@ GameObject:
   - component: {fileID: 1120676919}
   - component: {fileID: 1120676918}
   m_Layer: 0
-  m_Name: EventTitle
+  m_Name: LocationName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1258,7 +1236,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: EVENT TITLE
+  m_text: Location Name
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1381,8 +1359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsPersistent: 0
-  _eventTitle: {fileID: 0}
-  _fullBackground: {fileID: 1618309570}
+  _locationName: {fileID: 0}
   _testEventData: {fileID: 11400000, guid: 20b49004c565cfd41b8a3f7766b5dc99, type: 2}
 --- !u!1 &1200765259
 GameObject:
@@ -1714,8 +1691,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45d7bb2f86495ff45b8ce625bb76973a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _card: {fileID: 0}
-  _display: {fileID: 1597445177}
 --- !u!1 &1618309568
 GameObject:
   m_ObjectHideFlags: 0
