@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using BinaryEyes.Common.Attributes;
+using BinaryEyes.Common.Data;
 using BinaryEyes.Common.Extensions;
 using Elbows.Enums;
 using UnityEngine;
@@ -28,18 +29,21 @@ namespace Elbows.LocationComponents
             topView.gameObject.SetActive(true);
             _views.Insert(0, topView);
 
+            var offsetRange = new Interval(3.0f, 1.0f);
+            var cardsRange = new Interval(5.0f, 50.0f);
+            var offset = -MapValue(_views.Count, cardsRange, offsetRange);
             for (var i = 0; i < _views.Count; i++)
             {
                 var view = _views[i];
                 view.enabled = i == 0;
-                UpdateViewOffset(view.transform, i);
+                UpdateViewOffset(view.transform, i*offset);
             }
         }
 
-        private static void UpdateViewOffset(Transform entry, int i)
+        private static void UpdateViewOffset(Transform entry, float step)
         {
             var entryPosition = entry.localPosition;
-            entryPosition.y = OffsetStep*i;
+            entryPosition.y = step;
             entry.localPosition = entryPosition;
         }
 
@@ -47,6 +51,13 @@ namespace Elbows.LocationComponents
         {
             _cardView = GetComponentInChildren<CardView>();
             _cardView.gameObject.SetActive(false);
+        }
+
+        private static float MapValue(float value, Interval source, Interval target)
+        {
+            value = source.GetLocked(value);
+            var normalized = (value - source.Min)/(source.Max - source.Min);
+            return target.Min + normalized*(target.Max - target.Min);
         }
     }
 }

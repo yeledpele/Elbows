@@ -42,7 +42,7 @@ namespace Elbows.LocationComponents
             _locationName.text = _testEventData.name;
 
             var panel = _panels[QueueSpot.Center];
-            for (var i = 0; i < 5; i++)
+            for (var i = 0; i < 50; i++)
             {
                 panel.RegisterCard();
             }
