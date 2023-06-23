@@ -40,6 +40,12 @@ namespace Elbows.LocationComponents
         {
             yield return null;//wait one frame
             _locationName.text = _testEventData.name;
+
+            var panel = _panels[QueueSpot.Center];
+            for (var i = 0; i < 5; i++)
+            {
+                panel.RegisterCard();
+            }
         }
     }
 }

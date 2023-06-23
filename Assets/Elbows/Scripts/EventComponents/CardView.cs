@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using BinaryEyes.Common.Extensions;
+using UnityEngine;
 
 namespace Elbows.LocationComponents
 {
@@ -9,6 +10,6 @@ namespace Elbows.LocationComponents
     public class CardView
         : MonoBehaviour
     {
-
+        
     }
 }
