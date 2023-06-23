@@ -1,5 +1,7 @@
 ﻿using BinaryEyes.Common.Extensions;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 namespace Elbows.LocationComponents
 {
@@ -8,8 +10,14 @@ namespace Elbows.LocationComponents
     /// found in a given queue panel.
     /// </summary>
     public class CardView
-        : MonoBehaviour
+        : MonoBehaviour, IPointerClickHandler
     {
-        
+        public UnityEvent<CardView> Clicked;
+
+        public void OnPointerClick(PointerEventData pointer)
+        {
+            this.LogMessage("Clicked");
+            Clicked.Invoke(this);
+        }
     }
 }

@@ -23,24 +23,24 @@ namespace Elbows.LocationComponents
 
         public void RegisterCard()
         {
-            var view = Instantiate(_cardView, transform);
-            view.SetName($"Card ({_views.Count + 1})");
-            view.gameObject.SetActive(true);
+            var topView = Instantiate(_cardView, transform);
+            topView.SetName($"Card ({_views.Count + 1})");
+            topView.gameObject.SetActive(true);
+            _views.Insert(0, topView);
 
-            _views.Insert(0, view);
-
-            UpdateViewOffsets();
-        }
-
-        private void UpdateViewOffsets()
-        {
             for (var i = 0; i < _views.Count; i++)
             {
-                var entry = _views[i].transform;
-                var entryPosition = entry.localPosition;
-                entryPosition.y = OffsetStep*i;
-                entry.localPosition = entryPosition;
+                var view = _views[i];
+                view.enabled = i == 0;
+                UpdateViewOffset(view.transform, i);
             }
+        }
+
+        private static void UpdateViewOffset(Transform entry, int i)
+        {
+            var entryPosition = entry.localPosition;
+            entryPosition.y = OffsetStep*i;
+            entry.localPosition = entryPosition;
         }
 
         private void Awake()
