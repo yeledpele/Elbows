@@ -10,8 +10,10 @@ namespace Elbows.Data
     public class PlayerData
         : ScriptableObject
     {
-        public float Battery;
-        public float Fuel;
-        public float Money;
+        public int HealthPoints;
+        public int Patience;
+        public int Assertiveness;
+        public int Strength;
+        public int Speed;
     }
 }
