@@ -134,14 +134,13 @@ GameObject:
   - component: {fileID: 164058328}
   - component: {fileID: 164058331}
   - component: {fileID: 164058330}
-  - component: {fileID: 164058332}
   m_Layer: 0
   m_Name: QueuePanel (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &164058328
 RectTransform:
   m_ObjectHideFlags: 0
@@ -160,8 +159,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 317.26193, y: -540}
-  m_SizeDelta: {x: 634.52386, y: 800}
+  m_AnchoredPosition: {x: 293.4762, y: -540}
+  m_SizeDelta: {x: 586.9524, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &164058330
 MonoBehaviour:
@@ -201,21 +200,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 164058327}
   m_CullTransparentMesh: 1
---- !u!114 &164058332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 164058327}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e721ecea15e035a40a7eb0dea6a9a953, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cardView: {fileID: 0}
-  _views: []
-  _spot: -1
 --- !u!1 &316750912
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,14 +295,13 @@ GameObject:
   - component: {fileID: 509950748}
   - component: {fileID: 509950750}
   - component: {fileID: 509950749}
-  - component: {fileID: 509950751}
   m_Layer: 0
   m_Name: QueuePanel (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &509950748
 RectTransform:
   m_ObjectHideFlags: 0
@@ -337,8 +320,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1646.3097, y: -540}
-  m_SizeDelta: {x: 634.52386, y: 800}
+  m_AnchoredPosition: {x: 1527.381, y: -540}
+  m_SizeDelta: {x: 586.9524, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &509950749
 MonoBehaviour:
@@ -378,21 +361,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 509950747}
   m_CullTransparentMesh: 1
---- !u!114 &509950751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 509950747}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e721ecea15e035a40a7eb0dea6a9a953, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cardView: {fileID: 0}
-  _views: []
-  _spot: 1
 --- !u!1 &563741953
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,7 +541,6 @@ GameObject:
   - component: {fileID: 694482575}
   - component: {fileID: 694482577}
   - component: {fileID: 694482576}
-  - component: {fileID: 694482578}
   m_Layer: 0
   m_Name: CardView
   m_TagString: Untagged
@@ -639,18 +606,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 694482574}
   m_CullTransparentMesh: 1
---- !u!114 &694482578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 694482574}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45d7bb2f86495ff45b8ce625bb76973a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &819954909
 GameObject:
   m_ObjectHideFlags: 0
@@ -776,7 +731,6 @@ GameObject:
   - component: {fileID: 914688928}
   - component: {fileID: 914688930}
   - component: {fileID: 914688929}
-  - component: {fileID: 914688931}
   m_Layer: 0
   m_Name: CardView
   m_TagString: Untagged
@@ -842,18 +796,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 914688927}
   m_CullTransparentMesh: 1
---- !u!114 &914688931
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 914688927}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45d7bb2f86495ff45b8ce625bb76973a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1077156257
 GameObject:
   m_ObjectHideFlags: 0
@@ -864,7 +806,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1077156258}
   - component: {fileID: 1077156260}
-  - component: {fileID: 1077156259}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -887,21 +828,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1077156259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1077156257}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: beb487ef08f452b449e20252e8c22aef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsPersistent: 0
-  _current: {fileID: 0}
-  _data: {fileID: 11400000, guid: ec15498c8d11a624a8b444e99004d978, type: 2}
 --- !u!114 &1077156260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -925,7 +851,6 @@ GameObject:
   - component: {fileID: 1104578646}
   - component: {fileID: 1104578648}
   - component: {fileID: 1104578647}
-  - component: {fileID: 1104578649}
   m_Layer: 0
   m_Name: QueuePanel (2)
   m_TagString: Untagged
@@ -951,8 +876,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 981.78577, y: -540}
-  m_SizeDelta: {x: 634.52386, y: 800}
+  m_AnchoredPosition: {x: 910.4286, y: -540}
+  m_SizeDelta: {x: 586.9524, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1104578647
 MonoBehaviour:
@@ -992,21 +917,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1104578645}
   m_CullTransparentMesh: 1
---- !u!114 &1104578649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1104578645}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e721ecea15e035a40a7eb0dea6a9a953, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cardView: {fileID: 0}
-  _views: []
-  _spot: 0
 --- !u!1 &1119010619
 GameObject:
   m_ObjectHideFlags: 0
@@ -1227,7 +1137,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1132239352}
-  - component: {fileID: 1132239353}
   m_Layer: 0
   m_Name: Location
   m_TagString: Untagged
@@ -1251,21 +1160,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1132239353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1132239351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 934b9a24e5e0bc145bbb8add0bc22037, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsPersistent: 0
-  _locationName: {fileID: 0}
-  _testEventData: {fileID: 11400000, guid: 20b49004c565cfd41b8a3f7766b5dc99, type: 2}
 --- !u!1 &1200765259
 GameObject:
   m_ObjectHideFlags: 0
@@ -1452,7 +1346,6 @@ GameObject:
   - component: {fileID: 1597445176}
   - component: {fileID: 1597445178}
   - component: {fileID: 1597445177}
-  - component: {fileID: 1597445179}
   m_Layer: 0
   m_Name: CardView
   m_TagString: Untagged
@@ -1518,18 +1411,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1597445175}
   m_CullTransparentMesh: 1
---- !u!114 &1597445179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1597445175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45d7bb2f86495ff45b8ce625bb76973a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1618309568
 GameObject:
   m_ObjectHideFlags: 0
