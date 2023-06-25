@@ -21,13 +21,13 @@ namespace Elbows.Data
         public IReadOnlyList<QueueCardData> MainCards => _mainCards;
         public Sprite FullBackground => _fullBackground;
 
-        public Sprite GetBackground(EventPanelType type)
+        public Sprite GetBackground(QueueSpot type)
         {
             return type switch
             {
-                EventPanelType.Left => _leftBackground,
-                EventPanelType.Center => _centerBackground,
-                EventPanelType.Right => _rightBackground,
+                QueueSpot.Left => _leftBackground,
+                QueueSpot.Center => _centerBackground,
+                QueueSpot.Right => _rightBackground,
                 _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
             };
         }

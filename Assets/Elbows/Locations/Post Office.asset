@@ -16,8 +16,4 @@ MonoBehaviour:
   _leftBackground: {fileID: 21300000, guid: b90d4b63396b8c549afaf2b1376d7057, type: 3}
   _centerBackground: {fileID: 21300000, guid: ff3e1d1d32235744684e81b1527f7c91, type: 3}
   _rightBackground: {fileID: 21300000, guid: d4bbb66f060ed374a866b5e123f2a013, type: 3}
-  _mainCards:
-  - {fileID: 11400000, guid: e2d3c38d47ad4d0438b590f9bfb3e5e9, type: 2}
-  - {fileID: 11400000, guid: b3c0f9c58680aee4198d59954e4a130e, type: 2}
-  - {fileID: 11400000, guid: d56ca230c9adf5f4dbf35cdffc277653, type: 2}
-  - {fileID: 11400000, guid: 9c66e8c4abebeb74abccc53680e4d40f, type: 2}
+  _mainCards: []

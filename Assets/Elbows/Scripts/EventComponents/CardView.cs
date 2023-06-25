@@ -1,29 +1,23 @@
-﻿using BinaryEyes.Common.Attributes;
-using Elbows.Data;
+﻿using BinaryEyes.Common.Extensions;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
-namespace Elbows.EventComponents
+namespace Elbows.LocationComponents
 {
     /// <summary>
-    /// The CardView behaviour is a visual container of a single (event) card
+    /// The CardView behaviour is a visual container of a single card
     /// found in a given queue panel.
     /// </summary>
     public class CardView
-        : MonoBehaviour
+        : MonoBehaviour, IPointerClickHandler
     {
-        [SerializeField] [ReadOnlyField] private QueueCardData _card;
-        [SerializeField] private Image _display;
+        public UnityEvent<CardView> Clicked;
 
-        public CardView SetData(QueueCardData data)
+        public void OnPointerClick(PointerEventData pointer)
         {
-            _card = Instantiate(data);
-            _display.sprite = _card.BackImage;
-            _display.enabled = true;
-
-            name = data.name;
-            gameObject.SetActive(true);
-            return this;
+            this.LogMessage("Clicked");
+            Clicked.Invoke(this);
         }
     }
 }
