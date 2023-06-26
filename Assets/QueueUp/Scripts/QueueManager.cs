@@ -47,7 +47,7 @@ namespace QueueUp
                 _queue.Add(row);
             }
 
-            _playerPlace = totalRows;
+            _playerPlace = totalRows + 1;
             _playerMoved.Invoke();
         }
 
