@@ -47,6 +47,11 @@ namespace QueueUp
                 _queue.Add(row);
             }
 
+            var playerRow = Instantiate(_rowPrefab, _rowPrefab.transform.parent)
+                .SetName("Player")
+                .SetActive(false);
+            _queue.Add(playerRow);
+
             _playerPlace = totalRows + 1;
             _playerMoved.Invoke();
         }

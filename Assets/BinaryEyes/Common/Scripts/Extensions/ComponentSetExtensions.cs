@@ -7,6 +7,12 @@ namespace BinaryEyes.Common.Extensions
     /// </summary>
     public static class ComponentSetExtensions
     {
+        public static T SetActive<T>(this T source, bool value) where T : MonoBehaviour
+        {
+            source.gameObject.SetActive(value);
+            return source;
+        }
+
         public static T SetEnabled<T>(this T source, bool value) where T : MonoBehaviour
         {
             source.enabled = value;

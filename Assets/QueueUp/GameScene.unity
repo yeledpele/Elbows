@@ -695,6 +695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da38c3cd690bcb84d9e3d648e2f87506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _state: 0
   _owner: {fileID: 0}
   _data: {fileID: 0}
   _image: {fileID: 0}
@@ -926,6 +927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da38c3cd690bcb84d9e3d648e2f87506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _state: 0
   _owner: {fileID: 0}
   _data: {fileID: 0}
   _image: {fileID: 0}
@@ -1465,7 +1467,6 @@ MonoBehaviour:
   _queueRowsCount:
     Min: 10
     Max: 50
-  Prefab: {fileID: 0}
 --- !u!1 &1136831529
 GameObject:
   m_ObjectHideFlags: 0
@@ -1685,6 +1686,7 @@ GameObject:
   - component: {fileID: 1426096338}
   - component: {fileID: 1426096340}
   - component: {fileID: 1426096339}
+  - component: {fileID: 1426096341}
   m_Layer: 0
   m_Name: PlayerPlaceDisplay
   m_TagString: Untagged
@@ -1809,6 +1811,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1426096337}
   m_CullTransparentMesh: 1
+--- !u!114 &1426096341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426096337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95285022137c69340ae48a2dcc881002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _output: {fileID: 0}
 --- !u!1 &1575152902
 GameObject:
   m_ObjectHideFlags: 0
@@ -1931,6 +1946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da38c3cd690bcb84d9e3d648e2f87506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _state: 0
   _owner: {fileID: 0}
   _data: {fileID: 0}
   _image: {fileID: 0}
