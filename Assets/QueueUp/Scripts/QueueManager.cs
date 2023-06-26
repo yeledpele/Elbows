@@ -1,9 +1,11 @@
+using System.Collections;
 using System.Collections.Generic;
 using BinaryEyes.Common;
 using BinaryEyes.Common.Attributes;
 using BinaryEyes.Common.Data;
 using BinaryEyes.Common.Extensions;
 using BinaryEyes.Common.Utilities;
+using QueueUp.Components;
 using QueueUp.Components.UI;
 using QueueUp.Data;
 using QueueUp.Data.CardsData;
@@ -58,10 +60,24 @@ namespace QueueUp
 
         private void AdvancePlayer()
         {
+            StartCoroutine(PerformPlayerMovementForward());
+        }
+
+        private IEnumerator PerformPlayerMovementForward()
+        {
+            InputBlock.Instance.Activate();
             var playerRowIndex = _playerPlace;
             var playerRow = _queue[playerRowIndex];
             var currentRow = _queue[playerRowIndex - 1];
+            var group = currentRow.GetComponent<CanvasGroup>();
+
+            var currentRowY = group.transform.localPosition.y;
+            var moveTween = LeanTween.moveLocalY(group.gameObject, currentRowY + 150.0f, 0.5f).setEaseOutSine();
+            var fadeTween = LeanTween.alphaCanvas(group, 0.0f, 0.5f).setEaseOutSine();
+            yield return new WaitWhile(() => LeanTween.isTweening(fadeTween.uniqueId));
+            
             currentRow.SetActive(false);
+            currentRow.transform.SetLocalPositionY(currentRowY);
 
             _queue[playerRowIndex] = currentRow;
             _queue[playerRowIndex - 1] = playerRow;
@@ -71,6 +87,7 @@ namespace QueueUp
             playerRow.transform.SetSiblingIndex(playerSiblingIndex - 1);
             _playerPlace = playerRowIndex - 1;
             _playerMoved.Invoke();
+            InputBlock.Instance.Deactivate();
         }
 
         private CardData[] GenerateRowCardsData(int index)
@@ -81,11 +98,6 @@ namespace QueueUp
                 Instantiate(_blankCardData),
                 index == 0 ? null : Instantiate(_blankCardData),
             };
-        }
-
-        public void MovePlayer(int direction)
-        {
-
         }
 
         protected override void Awake()
