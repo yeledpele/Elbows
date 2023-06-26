@@ -5,6 +5,11 @@ namespace QueueUp.Data
     [Serializable]
     public class Card
     {
-        private CardData _data;
+        private readonly CardData _data;
+
+        public Card(CardData data)
+        {
+            _data = data;
+        }
     }
 }
