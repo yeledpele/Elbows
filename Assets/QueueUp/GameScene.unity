@@ -1246,9 +1246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _queueIndex: 0
-  _left: {fileID: 0}
-  _center: {fileID: 0}
-  _right: {fileID: 0}
+  _views: []
 --- !u!114 &1120371213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1593,6 +1591,7 @@ GameObject:
   - component: {fileID: 1293112012}
   - component: {fileID: 1293112013}
   - component: {fileID: 1293112014}
+  - component: {fileID: 1293112015}
   m_Layer: 0
   m_Name: QueuePanels
   m_TagString: Untagged
@@ -1663,6 +1662,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 0
+--- !u!225 &1293112015
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293112011}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &1426096337
 GameObject:
   m_ObjectHideFlags: 0

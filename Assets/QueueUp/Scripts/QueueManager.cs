@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using BinaryEyes.Common;
 using BinaryEyes.Common.Attributes;
 using BinaryEyes.Common.Data;
+using BinaryEyes.Common.Extensions;
 using BinaryEyes.Common.Utilities;
 using QueueUp.Components.UI;
 using QueueUp.Data;
@@ -34,20 +35,29 @@ namespace QueueUp
             var tintCheck = totalRows%2 == 0 ? 0 : 1;
             for (var i = 0; i < totalRows; i++)
             {
-                var tint = (i%2 == tintCheck) ? 0.7f : 1.0f;
+                var rowCardsData = GenerateRowCardsData(i);
+                var tint = i%2 == tintCheck ? 0.7f : 1.0f;
                 var color = new Color(tint, tint, tint, 1.0f);
 
                 var queueIndex = i + 1;
                 var row = Instantiate(_rowPrefab, _rowPrefab.transform.parent);
-                row.Initialize(queueIndex);
-                row.Left.Initialize(_blankCardData);
-                row.Center.Initialize(_blankCardData);
-                row.Right.Initialize(_blankCardData);
+                row.Initialize(queueIndex, rowCardsData);
+  
                 row.gameObject.SetActive(true);
                 row.transform.localPosition += new Vector3(0.0f, offset*i, 0.0f);
                 row.SetTint(color);
                 _queue.Add(row);
             }
+        }
+
+        private CardData[] GenerateRowCardsData(int index)
+        {
+            return new[]
+            {
+                index == 0 ? null : Instantiate(_blankCardData),
+                Instantiate(_blankCardData),
+                index == 0 ? null : Instantiate(_blankCardData),
+            };
         }
 
         public void MovePlayer(int direction)
