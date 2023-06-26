@@ -40,9 +40,9 @@ namespace QueueUp
 
                 var row = Instantiate(_rowPrefab, _rowPrefab.transform.parent);
                 row.Initialize(i, rowCardsData);
-  
                 row.gameObject.SetActive(true);
                 row.transform.localPosition += new Vector3(0.0f, offset*i - start, 0.0f);
+                row.AdvancePlayerRequested.AddListener(AdvancePlayer);
                 row.SetTint(color);
                 _queue.Add(row);
             }
@@ -54,6 +54,20 @@ namespace QueueUp
 
             _playerPlace = totalRows + 1;
             _playerMoved.Invoke();
+        }
+
+        private void AdvancePlayer()
+        {
+            var playerRowIndex = _playerPlace;
+            var playerRow = _queue[playerRowIndex];
+            var currentRow = _queue[playerRowIndex - 1];
+            currentRow.SetActive(false);
+
+            _queue[playerRowIndex] = currentRow;
+            _queue[playerRowIndex - 1] = playerRow;
+            
+            var playerSiblingIndex = playerRow.transform.GetSiblingIndex();
+            playerRow.transform.SetSiblingIndex(playerSiblingIndex - 1);
         }
 
         private CardData[] GenerateRowCardsData(int index)

@@ -1,9 +1,12 @@
 ﻿using System.Collections.Generic;
 using BinaryEyes.Common.Attributes;
+using BinaryEyes.Common.Data;
 using BinaryEyes.Common.Extensions;
 using QueueUp.Data;
 using QueueUp.Enums;
+using TMPro;
 using UnityEngine;
+using Event = BinaryEyes.Common.Data.Event;
 
 namespace QueueUp.Components.UI
 {
@@ -12,10 +15,12 @@ namespace QueueUp.Components.UI
     {
         [SerializeField] [ReadOnlyField] private int _queueIndex;
         [SerializeField] [ReadOnlyField] private List<CardView> _views;
+        [SerializeField] private Event _advancePlayerRequested;
         public int QueueIndex => _queueIndex;
         public CardView Left => _views[0];
         public CardView Center => _views[1];
         public CardView Right => _views[2];
+        public IEvent AdvancePlayerRequested => _advancePlayerRequested;
 
         public void SetTint(Color value)
         {
@@ -26,8 +31,8 @@ namespace QueueUp.Components.UI
 
         public QueueRow Initialize(int index, CardData[] data)
         {
-            name = $"Row ({index})";
             _queueIndex = index;
+            name = $"Row ({index})";
             var types = new[] { "Left", "Center", "Right" };
             for (var i = 0; i < data.Length; i++)
             {
@@ -46,7 +51,14 @@ namespace QueueUp.Components.UI
         private void HandleViewClicked(CardView view)
         {
             if (view.State == CardViewState.Unknown)
+            {
                 view.Reveal();
+                return;
+            }
+
+            var data = view.Data;
+            if (data.Type == CardType.Blank)
+                _advancePlayerRequested.Invoke();
         }
     }
 }
