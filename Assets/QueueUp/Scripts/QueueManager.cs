@@ -20,13 +20,15 @@ namespace QueueUp
         [SerializeField] [ReadOnlyField] private QueueRow _rowPrefab;
         [SerializeField] [ReadOnlyField] private int _playerPlace;
         [SerializeField] [ReadOnlyField] private List<QueueRow> _queue;
-        [SerializeField] private BlankCardData _blankCardData;
         [SerializeField] private Event _playerMoved;
+        [SerializeField] private Event _playerReachedQueueEnd;
+        [SerializeField] private BlankCardData _blankCardData;
         [SerializeField] private Range _queueRowsCount;
         public int QueueLength => _queue.Count;
         public int PlayerPlace => _playerPlace;
-        public IEvent PlayerMoved => _playerMoved;
         public IReadOnlyList<QueueRow> Queue => _queue;
+        public IEvent PlayerMoved => _playerMoved;
+        public IEvent PlayerReachedQueueEnd => _playerReachedQueueEnd;
 
         private void Start()
         {
@@ -70,24 +72,33 @@ namespace QueueUp
             var playerRow = _queue[playerRowIndex];
             var currentRow = _queue[playerRowIndex - 1];
             var group = currentRow.GetComponent<CanvasGroup>();
+            group.interactable = false;
+            group.blocksRaycasts = false;
 
+            const float tweenTime = 0.5f;
             var currentRowY = group.transform.localPosition.y;
-            var moveTween = LeanTween.moveLocalY(group.gameObject, currentRowY + 150.0f, 0.5f).setEaseOutSine();
-            var fadeTween = LeanTween.alphaCanvas(group, 0.0f, 0.5f).setEaseOutSine();
+            var moveTween = LeanTween.moveLocalY(group.gameObject, currentRowY + 150.0f, tweenTime).setEaseOutSine();
+            var fadeTween = LeanTween.alphaCanvas(group, 0.0f, tweenTime).setEaseOutSine();
+            yield return new WaitForSeconds(tweenTime*0.75f);
+
+            InputBlock.Instance.Deactivate();
             yield return new WaitWhile(() => LeanTween.isTweening(fadeTween.uniqueId));
-            
+
             currentRow.SetActive(false);
             currentRow.transform.SetLocalPositionY(currentRowY);
 
+            _playerPlace = playerRowIndex - 1;
             _queue[playerRowIndex] = currentRow;
             _queue[playerRowIndex - 1] = playerRow;
-            _queue[playerRowIndex - 2].SetTint(Color.white);
+            if (_playerPlace != 0)
+                _queue[playerRowIndex - 2].SetTint(Color.white);
 
             var playerSiblingIndex = playerRow.transform.GetSiblingIndex();
             playerRow.transform.SetSiblingIndex(playerSiblingIndex - 1);
-            _playerPlace = playerRowIndex - 1;
             _playerMoved.Invoke();
-            InputBlock.Instance.Deactivate();
+
+            if (_playerPlace == 0)
+                _playerReachedQueueEnd.Invoke();
         }
 
         private CardData[] GenerateRowCardsData(int index)
