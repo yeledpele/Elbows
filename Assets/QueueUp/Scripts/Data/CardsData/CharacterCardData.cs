@@ -11,6 +11,14 @@ namespace QueueUp.Data.CardsData
         public int Str;
         public int Spd;
 
+        public string CharacterName;
+
+        public Sprite FrontImage;
+        public Sprite BackImage;
+
+        public string QuoteEnter;
+        public string QuoteExit;
+
 
         // Assuming the card has a color property
 
