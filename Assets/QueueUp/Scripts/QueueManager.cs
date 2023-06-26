@@ -79,7 +79,7 @@ namespace QueueUp
             var currentRowY = group.transform.localPosition.y;
             var moveTween = LeanTween.moveLocalY(group.gameObject, currentRowY + 150.0f, tweenTime).setEaseOutSine();
             var fadeTween = LeanTween.alphaCanvas(group, 0.0f, tweenTime).setEaseOutSine();
-            yield return new WaitForSeconds(tweenTime*0.75f);
+            yield return new WaitForSeconds(tweenTime*0.15f);
 
             InputBlock.Instance.Deactivate();
             yield return new WaitWhile(() => LeanTween.isTweening(fadeTween.uniqueId));
