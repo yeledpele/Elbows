@@ -25,6 +25,8 @@ namespace QueueUp
         public IEvent PlayerMoved => _playerMoved;
         public IReadOnlyList<QueueRow> Queue => _queue;
 
+        public RectTransform Prefab;
+
         private void Start()
         {
             var totalRows = _queueRowsCount.GetRandom();
@@ -32,14 +34,15 @@ namespace QueueUp
             for (var i = 0; i < totalRows; i++)
             {
                 var queueIndex = i + 1;
-                var row = Instantiate(_rowPrefab, _rowPrefab.transform);
-                row.Initialize(queueIndex);
-                row.Left.Initialize(_blankCardData);
-                row.Center.Initialize(_blankCardData);
-                row.Right.Initialize(_blankCardData);
-                row.gameObject.SetActive(true);
-                row.transform.localPosition += new Vector3(0.0f, offset*i, 0.0f);
-                _queue.Add(row);
+                var row = Instantiate(Prefab, Prefab.transform);
+                //var row = Instantiate(_rowPrefab, _rowPrefab.transform);
+                //row.Initialize(queueIndex);
+                //row.Left.Initialize(_blankCardData);
+                //row.Center.Initialize(_blankCardData);
+                //row.Right.Initialize(_blankCardData);
+                //row.gameObject.SetActive(true);
+                //row.transform.localPosition += new Vector3(0.0f, offset * i, 0.0f);
+                //_queue.Add(row);
             }
         }
 

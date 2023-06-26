@@ -19,9 +19,9 @@ namespace QueueUp.Components.UI
         public QueueRow Initialize(int index)
         {
             _queueIndex = index;
-            _left = this.GetNameComponent<CardView>("Left");
-            _center = this.GetNameComponent<CardView>("Center");
-            _right = this.GetNameComponent<CardView>("Right");
+            _left = this.GetNamedComponent<CardView>("Left");
+            _center = this.GetNamedComponent<CardView>("Center");
+            _right = this.GetNamedComponent<CardView>("Right");
             return this;
         }
     }

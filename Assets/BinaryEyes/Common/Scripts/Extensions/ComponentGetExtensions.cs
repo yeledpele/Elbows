@@ -5,7 +5,7 @@ namespace BinaryEyes.Common.Extensions
 {
     public static class ComponentGetExtensions
     {
-        public static T GetNameComponent<T>(this Component source, string name)
+        public static T GetNamedComponent<T>(this Component source, string name)
             where T : Component
         {
             var targets = source.GetComponentsInChildren<T>(true);
