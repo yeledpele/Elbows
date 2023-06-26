@@ -52,7 +52,7 @@ namespace QueueUp
                 .SetActive(false);
             _queue.Add(playerRow);
 
-            _playerPlace = totalRows + 1;
+            _playerPlace = totalRows;
             _playerMoved.Invoke();
         }
 
@@ -65,9 +65,12 @@ namespace QueueUp
 
             _queue[playerRowIndex] = currentRow;
             _queue[playerRowIndex - 1] = playerRow;
-            
+            _queue[playerRowIndex - 2].SetTint(Color.white);
+
             var playerSiblingIndex = playerRow.transform.GetSiblingIndex();
             playerRow.transform.SetSiblingIndex(playerSiblingIndex - 1);
+            _playerPlace = playerRowIndex - 1;
+            _playerMoved.Invoke();
         }
 
         private CardData[] GenerateRowCardsData(int index)
