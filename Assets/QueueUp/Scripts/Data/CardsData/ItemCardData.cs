@@ -1,6 +1,11 @@
-﻿namespace QueueUp.Data.CardsData
+﻿using UnityEngine;
+
+namespace QueueUp.Data.CardsData
 {
-    internal class ItemCardData
+    [CreateAssetMenu(menuName = "Queue Up/Card Data/Item")]
+    public class ItemCardData
+        : CardData
     {
+        public override CardType Type => CardType.Item;
     }
 }

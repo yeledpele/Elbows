@@ -2,9 +2,10 @@
 
 namespace QueueUp.Data.CardsData
 {
-    [CreateAssetMenu(fileName = "New Event Card Data", menuName = "Card Data/Event Card Data")]
-    internal class EventCardData
+    [CreateAssetMenu(menuName = "Queue Up/Card Data/Event")]
+    public class EventCardData
+        : CardData
     {
-        public string Eventname;
+        public override CardType Type => CardType.Event;
     }
 }
