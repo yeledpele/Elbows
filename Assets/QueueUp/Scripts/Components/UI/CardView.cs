@@ -22,6 +22,9 @@ namespace QueueUp.Components.UI
         public void OnPointerClick(PointerEventData eventData)
             => _clicked.Invoke();
 
+        public void SetTint(Color value)
+            => _image.color = value;
+
         public CardView Initialize(CardData data)
         {
             _data = data;

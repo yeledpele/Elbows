@@ -16,8 +16,16 @@ namespace QueueUp.Components.UI
         public CardView Center => _center;
         public CardView Right => _right;
 
+        public void SetTint(Color value)
+        {
+            Left.SetTint(value);
+            Center.SetTint(value);
+            Right.SetTint(value);
+        }
+
         public QueueRow Initialize(int index)
         {
+            name = $"Row ({index})";
             _queueIndex = index;
             _left = this.GetNamedComponent<CardView>("Left");
             _center = this.GetNamedComponent<CardView>("Center");
