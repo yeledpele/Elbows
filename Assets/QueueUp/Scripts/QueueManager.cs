@@ -26,11 +26,10 @@ namespace QueueUp
         public IEvent PlayerMoved => _playerMoved;
         public IReadOnlyList<QueueRow> Queue => _queue;
 
-        public RectTransform Prefab;
-
         private void Start()
         {
             var totalRows = _queueRowsCount.GetRandom();
+            var start = MapValue.Perform(totalRows, new Interval(0.0f, 50.0f), new Interval(0.0f, 50.0f));
             var offset = MapValue.Perform(totalRows, new Interval(5.0f, 50.0f), new Interval(2.5f, 1.0f));
             var tintCheck = totalRows%2 == 0 ? 0 : 1;
             for (var i = 0; i < totalRows; i++)
@@ -39,15 +38,17 @@ namespace QueueUp
                 var tint = i%2 == tintCheck ? 0.7f : 1.0f;
                 var color = new Color(tint, tint, tint, 1.0f);
 
-                var queueIndex = i + 1;
                 var row = Instantiate(_rowPrefab, _rowPrefab.transform.parent);
-                row.Initialize(queueIndex, rowCardsData);
+                row.Initialize(i, rowCardsData);
   
                 row.gameObject.SetActive(true);
-                row.transform.localPosition += new Vector3(0.0f, offset*i, 0.0f);
+                row.transform.localPosition += new Vector3(0.0f, offset*i - start, 0.0f);
                 row.SetTint(color);
                 _queue.Add(row);
             }
+
+            _playerPlace = totalRows;
+            _playerMoved.Invoke();
         }
 
         private CardData[] GenerateRowCardsData(int index)
