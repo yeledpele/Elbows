@@ -9,9 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e51ad79b97454ce45a8cd5df7d2d8b52, type: 3}
-  m_Name: DefaultBlankCard
+  m_Script: {fileID: 11500000, guid: 1946dd8a80da5d244ad44743a96573e7, type: 3}
+  m_Name: 02DitaSci
   m_EditorClassIdentifier: 
   _backImage: {fileID: 21300000, guid: 053f5fb0199747c4d93565439a6700d6, type: 3}
-  _frontImage: {fileID: 21300000, guid: b111969f75444b04cb9198442449ea05, type: 3}
-  _displayName: 
+  _frontImage: {fileID: 21300000, guid: 47511eb3947fbf84a83509d71a2c42fe, type: 3}
+  _displayName: "\u05D3\u05D9\u05D8\u05D4 \u05E1\u05D0\u05D9"
+  Health: 90
+  Patience: 100
+  Assertiveness: 50
+  Strength: 50
+  Speed: 50
+  QuoteEnter: 
+  QuoteExit: 

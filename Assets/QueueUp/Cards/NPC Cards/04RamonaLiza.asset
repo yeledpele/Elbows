@@ -9,9 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e51ad79b97454ce45a8cd5df7d2d8b52, type: 3}
-  m_Name: DefaultBlankCard
+  m_Script: {fileID: 11500000, guid: 1946dd8a80da5d244ad44743a96573e7, type: 3}
+  m_Name: 04RamonaLiza
   m_EditorClassIdentifier: 
   _backImage: {fileID: 21300000, guid: 053f5fb0199747c4d93565439a6700d6, type: 3}
-  _frontImage: {fileID: 21300000, guid: b111969f75444b04cb9198442449ea05, type: 3}
-  _displayName: 
+  _frontImage: {fileID: 21300000, guid: 798076e14f0c1d84da86991ab29de6c3, type: 3}
+  _displayName: "\u05E8\u05DE\u05D5\u05E0\u05D4 \u05DC\u05D9\u05D6\u05D4"
+  Health: 80
+  Patience: 100
+  Assertiveness: 15
+  Strength: 30
+  Speed: 10
+  QuoteEnter: 
+  QuoteExit: 
