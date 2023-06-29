@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using BinaryEyes.Common;
 using BinaryEyes.Common.Attributes;
 using BinaryEyes.Common.Data;
@@ -17,13 +18,20 @@ namespace QueueUp
     public class QueueManager
         : SingletonComponent<QueueManager>
     {
+        [Header("State")]
         [SerializeField] [ReadOnlyField] private QueueRow _rowPrefab;
         [SerializeField] [ReadOnlyField] private int _playerPlace;
         [SerializeField] [ReadOnlyField] private List<QueueRow> _queue;
+
+        [Header("Events")]
         [SerializeField] private Event _playerMoved;
         [SerializeField] private Event _playerReachedQueueEnd;
+
+        [Header("Cards")]
         [SerializeField] private BlankCardData _blankCardData;
+        [SerializeField] private CharacterCardData[] _npcCardsData;
         [SerializeField] private Range _queueRowsCount;
+
         public int QueueLength => _queue.Count;
         public int PlayerPlace => _playerPlace;
         public IReadOnlyList<QueueRow> Queue => _queue;
@@ -32,13 +40,17 @@ namespace QueueUp
 
         private void Start()
         {
+            var npcCardsData = _npcCardsData.ToList();
             var totalRows = _queueRowsCount.GetRandom();
             var start = MapValue.Perform(totalRows, new Interval(0.0f, 50.0f), new Interval(0.0f, 50.0f));
             var offset = MapValue.Perform(totalRows, new Interval(5.0f, 50.0f), new Interval(2.5f, 1.0f));
             var tintCheck = totalRows%2 == 0 ? 0 : 1;
             for (var i = 0; i < totalRows; i++)
             {
-                var rowCardsData = GenerateRowCardsData(i);
+                if (npcCardsData.Count == 0)
+                    npcCardsData = _npcCardsData.ToList();
+
+                var rowCardsData = GenerateRowCardsData(i, npcCardsData);
                 var tint = i%2 == tintCheck ? 0.7f : 1.0f;
                 var color = new Color(tint, tint, tint, 1.0f);
 
@@ -101,14 +113,12 @@ namespace QueueUp
                 _playerReachedQueueEnd.Invoke();
         }
 
-        private CardData[] GenerateRowCardsData(int index)
+        private CardData[] GenerateRowCardsData(int index, List<CharacterCardData> npcCardsData)
         {
-            return new[]
-            {
-                index == 0 ? null : Instantiate(_blankCardData),
-                Instantiate(_blankCardData),
-                index == 0 ? null : Instantiate(_blankCardData),
-            };
+            CardData leftCard = index == 0 ? null : Instantiate(_blankCardData);
+            CardData centerCard = npcCardsData.PopRandom();
+            CardData rightCard = index == 0 ? null : Instantiate(_blankCardData);
+            return new[] { leftCard, centerCard, rightCard };
         }
 
         protected override void Awake()

@@ -2373,6 +2373,14 @@ MonoBehaviour:
             m_BoolArgument: 1
           m_CallState: 2
   _blankCardData: {fileID: 11400000, guid: 5033d390a8ca9474d87091171fa86931, type: 2}
+  _npcCardsData:
+  - {fileID: 11400000, guid: 9cf0a2ec08c725c4b881f71863465c58, type: 2}
+  - {fileID: 11400000, guid: 11febcfb1c8bd8849aa0c5f32abed64f, type: 2}
+  - {fileID: 11400000, guid: d250f2be4eaa2f6448bda1a6ba5a6659, type: 2}
+  - {fileID: 11400000, guid: cadf576a6c5849f459a81007687ba4d2, type: 2}
+  - {fileID: 11400000, guid: 3a417e6f066bbbd4f9f8090fd3d1d930, type: 2}
+  - {fileID: 11400000, guid: 384340463fdfbf24a831603df3b9f9d8, type: 2}
+  - {fileID: 11400000, guid: 64bac8446c5c6b04cad41a29f6540cb5, type: 2}
   _queueRowsCount:
     Min: 10
     Max: 50
