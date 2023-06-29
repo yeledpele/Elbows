@@ -59,6 +59,7 @@ namespace QueueUp
                 row.gameObject.SetActive(true);
                 row.transform.localPosition += new Vector3(0.0f, offset*i - start, 0.0f);
                 row.AdvancePlayerRequested.AddListener(AdvancePlayer);
+                row.PlayerCombatRequested.AddListener(ResolvePlayerCombat);
                 row.SetTint(color);
                 _queue.Add(row);
             }
@@ -70,6 +71,11 @@ namespace QueueUp
 
             _playerPlace = totalRows;
             _playerMoved.Invoke();
+        }
+
+        private void ResolvePlayerCombat(CharacterCardData npc)
+        {
+            this.LogMessage($"ResolvingPlayerCombat: npc={npc.DisplayName}");
         }
 
         private void AdvancePlayer()
