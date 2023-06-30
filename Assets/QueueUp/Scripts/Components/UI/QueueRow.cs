@@ -3,9 +3,7 @@ using BinaryEyes.Common.Attributes;
 using BinaryEyes.Common.Data;
 using BinaryEyes.Common.Extensions;
 using QueueUp.Data;
-using QueueUp.Data.CardsData;
 using QueueUp.Enums;
-using TMPro;
 using UnityEngine;
 using Event = BinaryEyes.Common.Data.Event;
 
@@ -17,13 +15,13 @@ namespace QueueUp.Components.UI
         [SerializeField] [ReadOnlyField] private int _queueIndex;
         [SerializeField] [ReadOnlyField] private List<CardView> _views;
         [SerializeField] private Event _advancePlayerRequested;
-        [SerializeField] private Event<CharacterCardData> _playerCombatRequested;
+        [SerializeField] private Event<CardView> _playerCombatRequested;
         public int QueueIndex => _queueIndex;
         public CardView Left => _views[0];
         public CardView Center => _views[1];
         public CardView Right => _views[2];
         public IEvent AdvancePlayerRequested => _advancePlayerRequested;
-        public IEvent<CharacterCardData> PlayerCombatRequested => _playerCombatRequested;
+        public IEvent<CardView> PlayerCombatRequested => _playerCombatRequested;
 
         public void SetTint(Color value)
         {
@@ -64,7 +62,7 @@ namespace QueueUp.Components.UI
                 _advancePlayerRequested.Invoke();
 
             if (data.Type == CardType.Character)
-                _playerCombatRequested.Invoke(data as CharacterCardData);
+                _playerCombatRequested.Invoke(view);
         }
     }
 }

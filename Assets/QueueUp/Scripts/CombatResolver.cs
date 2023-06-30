@@ -13,15 +13,16 @@ namespace QueueUp
     {
         [SerializeField] private MessagePanel _messagePanel;
 
-        public void ResolvePlayerCombat(CharacterCardData npc)
+        public void ResolvePlayerCombat(CardView cardView)
         {
-            this.LogMessage($"ResolvingPlayerCombat: npc={npc.DisplayName}");
-            StartCoroutine(PerformPlayerCombat(npc));
+            this.LogMessage($"ResolvingPlayerCombat: npc={cardView.Data.DisplayName}");
+            StartCoroutine(PerformPlayerCombat(cardView));
         }
 
-        private IEnumerator PerformPlayerCombat(CharacterCardData npc)
+        private IEnumerator PerformPlayerCombat(CardView cardView)
         {
             var player = PlayerManager.Instance;
+            var npc = (CharacterCardData)cardView.Data;
 
             if (npc.Speed >= player.Speed)
             {
