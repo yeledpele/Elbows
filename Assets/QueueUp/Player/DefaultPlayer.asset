@@ -16,5 +16,5 @@ MonoBehaviour:
   Patience: 10
   Assertiveness: 10
   Strength: 10
-  Speed: 10
+  Speed: 1000
   PlayerImage: {fileID: 0}

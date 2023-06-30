@@ -2774,6 +2774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsPersistent: 0
+  _messagePanel: {fileID: 2035719163}
 --- !u!1 &1136831529
 GameObject:
   m_ObjectHideFlags: 0
@@ -4075,7 +4076,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2035719159
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4159,4 +4160,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb099bfc1d5a001459071d7615295500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textDisplay: {fileID: 0}
+  _textDisplay: {fileID: 843695493}
+  _group: {fileID: 2035719162}
+  _isVisible: 0
