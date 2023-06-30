@@ -51,11 +51,8 @@ namespace QueueUp.Components.UI
                 if (_clickCount == 2)
                 {
                     _clickCount = 0;
-                    if (delta < 0.25f)
-                    {
-                        this.LogMessage("DoubleClicked");
+                    if (delta < 0.3f)
                         _clicked.Invoke();
-                    }
                 }
                 
                 _lastClickTime = currentTime;
