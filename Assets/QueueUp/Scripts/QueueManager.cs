@@ -76,6 +76,7 @@ namespace QueueUp
         private void ResolvePlayerCombat(CharacterCardData npc)
         {
             this.LogMessage($"ResolvingPlayerCombat: npc={npc.DisplayName}");
+
         }
 
         private void AdvancePlayer()

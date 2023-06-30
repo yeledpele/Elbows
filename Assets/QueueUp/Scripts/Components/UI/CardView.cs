@@ -19,6 +19,10 @@ namespace QueueUp.Components.UI
         [SerializeField] [ReadOnlyField] private CardData _data;
         [SerializeField] [ReadOnlyField] private Image _image;
         [SerializeField] private Event _clicked;
+        [SerializeField] private int _clickCount;
+        [SerializeField] private float _lastClickTime;
+        [SerializeField] private float _delta;
+
         public IEvent Clicked => _clicked;
         public int QueueIndex => _owner.QueueIndex;
         public CardData Data => _data;
@@ -37,7 +41,25 @@ namespace QueueUp.Components.UI
         public void OnPointerClick(PointerEventData eventData)
         {
             this.LogMessage($"Clicked: {GetPath()}");
-            _clicked.Invoke();
+            if (_state == CardViewState.Unknown)
+                _clicked.Invoke();
+            else
+            {
+                _clickCount += 1;
+                var currentTime = Time.realtimeSinceStartup;
+                var delta = _delta = currentTime - _lastClickTime;
+                if (_clickCount == 2)
+                {
+                    _clickCount = 0;
+                    if (delta < 0.25f)
+                    {
+                        this.LogMessage("DoubleClicked");
+                        _clicked.Invoke();
+                    }
+                }
+                
+                _lastClickTime = currentTime;
+            }
         }
 
         public void SetTint(Color value)
@@ -58,6 +80,9 @@ namespace QueueUp.Components.UI
         }
 
         private void Awake()
-            => _owner = GetComponentInParent<QueueRow>();
+        {
+            _lastClickTime = Time.realtimeSinceStartup;
+            _owner = GetComponentInParent<QueueRow>();
+        }
     }
 }
