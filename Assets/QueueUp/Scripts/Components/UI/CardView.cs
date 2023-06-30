@@ -14,14 +14,14 @@ namespace QueueUp.Components.UI
     public class CardView
         : MonoBehaviour, IPointerClickHandler
     {
+        public const float DoubleClickDelay = 0.3f;
         [SerializeField] [ReadOnlyField] private CardViewState _state;
         [SerializeField] [ReadOnlyField] private QueueRow _owner;
         [SerializeField] [ReadOnlyField] private CardData _data;
         [SerializeField] [ReadOnlyField] private Image _image;
         [SerializeField] private Event _clicked;
         [SerializeField] private int _clickCount;
-        [SerializeField] private float _lastClickTime;
-        [SerializeField] private float _delta;
+        [SerializeField] private float _clickTimeLeft;
 
         public IEvent Clicked => _clicked;
         public int QueueIndex => _owner.QueueIndex;
@@ -46,16 +46,13 @@ namespace QueueUp.Components.UI
             else
             {
                 _clickCount += 1;
-                var currentTime = Time.realtimeSinceStartup;
-                var delta = _delta = currentTime - _lastClickTime;
-                if (_clickCount == 2)
-                {
-                    _clickCount = 0;
-                    if (delta < 0.3f)
-                        _clicked.Invoke();
-                }
-                
-                _lastClickTime = currentTime;
+                _clickTimeLeft = DoubleClickDelay;
+                if (_clickCount < 2)
+                    return;
+
+                _clickCount = 0;
+                _clickTimeLeft = -1.0f;
+                _clicked.Invoke();
             }
         }
 
@@ -73,13 +70,28 @@ namespace QueueUp.Components.UI
 
             _data = data;
             _image.sprite = data.BackImage;
+            _state = CardViewState.Unknown;
             return this;
         }
 
-        private void Awake()
+        private void Update()
         {
-            _lastClickTime = Time.realtimeSinceStartup;
-            _owner = GetComponentInParent<QueueRow>();
+            if (_state == CardViewState.Unknown)
+                return;
+
+            if (_clickCount == 0)
+                return;
+
+            _clickTimeLeft -= Time.deltaTime;
+            if (_clickTimeLeft > 0.0f)
+                return;
+
+            _clickCount -= 1;
+            if (_clickCount > 0)
+                _clickTimeLeft = DoubleClickDelay;
         }
+
+        private void Awake()
+            => _owner = GetComponentInParent<QueueRow>();
     }
 }

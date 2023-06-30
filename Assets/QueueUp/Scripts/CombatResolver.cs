@@ -37,7 +37,9 @@ namespace QueueUp
                 player.ModifySpeed(-1);
             }
 
-
+            var defaultBlank = QueueManager.Instance.DefaultBlankCard;
+            cardView.Initialize(defaultBlank);
+            cardView.Reveal();
         }
 
         private IEnumerator ShowMessage(string message)

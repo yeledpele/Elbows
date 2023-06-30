@@ -37,6 +37,7 @@ namespace QueueUp
         public IReadOnlyList<QueueRow> Queue => _queue;
         public IEvent PlayerMoved => _playerMoved;
         public IEvent PlayerReachedQueueEnd => _playerReachedQueueEnd;
+        public BlankCardData DefaultBlankCard => _blankCardData;
 
         private void Start()
         {
