@@ -32,6 +32,18 @@ namespace QueueUp
         public IEvent StrengthChanged => _strengthChanged;
         public IEvent SpeedChanged => _speedChanged;
 
+        public void ModifySpeed(int value)
+        {
+            _speed += value;
+            _speedChanged.Invoke();
+        }
+
+        public void ModifyHealth(int value)
+        {
+            _health += value;
+            _healthChanged.Invoke();
+        }
+
         protected override void Awake()
         {
             _health = _stats.Health;

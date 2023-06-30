@@ -26,20 +26,23 @@ namespace QueueUp
             if (npc.Speed >= player.Speed)
             {
                 this.LogMessage($"{npc.name} attack player for {npc.Strength} damage");
-                yield return _messagePanel.StartShow($"{npc.DisplayName} הכניס/ה לך מכות");
-                yield return new WaitForSeconds(0.5f);
+                yield return ShowMessage($"{npc.DisplayName} הכניס/ה לך מכות");
+                player.ModifyHealth(-npc.Strength);
             }
             else
             {
                 this.LogMessage($"Player attacks {npc.name} for {player.Strength} damage");
-                yield return _messagePanel.StartShow($"פצצת את {npc.DisplayName} במכות");
+                yield return ShowMessage($"פצצת את {npc.DisplayName} במכות");
+                player.ModifySpeed(-1);
             }
+
+
         }
 
         private IEnumerator ShowMessage(string message)
         {
             yield return _messagePanel.StartShow(message);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1.0f);
             yield return _messagePanel.StartHide();
         }
     }
