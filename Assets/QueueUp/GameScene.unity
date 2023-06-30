@@ -759,6 +759,8 @@ MonoBehaviour:
   _healthDisplay: {fileID: 750748379}
   _patienceDisplay: {fileID: 654305832}
   _assertivenessDisplay: {fileID: 1301921732}
+  _strengthDisplay: {fileID: 739179535}
+  _speedDisplay: {fileID: 709984660}
 --- !u!1 &316750912
 GameObject:
   m_ObjectHideFlags: 0
@@ -1663,7 +1665,7 @@ GameObject:
   - component: {fileID: 709984661}
   - component: {fileID: 709984660}
   m_Layer: 0
-  m_Name: TextDisplay
+  m_Name: SpeedTextDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1798,7 +1800,7 @@ GameObject:
   - component: {fileID: 739179536}
   - component: {fileID: 739179535}
   m_Layer: 0
-  m_Name: TextDisplay
+  m_Name: StrengthTextDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
